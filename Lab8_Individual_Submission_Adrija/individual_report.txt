@@ -9,7 +9,7 @@ GenAI-Driven Uncertainty-Aware Forecasting and Recovery Simulation for Decision 
 1. Overview of My Individual Contribution
 For Lab 8, I completed this work as an individual submission and took responsibility for the full domain adaptation workflow. My goal was to extend my existing project from a general forecasting and retrieval-based explanation system into a more domain-specialized AI assistant for disaster forecasting and uncertainty-aware decision support.
 
-The main focus of my contribution was to design a small but meaningful instruction-tuning pipeline aligned with my project domain. Instead of relying only on prompting or retrieval, I prepared a domain-specific instruction dataset, implemented parameter-efficient fine-tuning using LoRA, and structured the adapted model so it could be integrated into the existing RAG and dashboard workflow.
+The main focus of my contribution was to design a small but meaningful instruction-tuning pipeline aligned with my project domain. Instead of relying only on prompting or retrieval, I prepared a domain-specific instruction dataset, implemented parameter-efficient fine-tuning using LoRA, integrated the adapted model into a FastAPI backend, and built a Streamlit application to demonstrate the end-to-end workflow.
 
 2. Specific Work Completed
 My work included the following major tasks:
@@ -18,88 +18,42 @@ A. Domain Task Definition
 I defined the domain task as uncertainty-aware disaster forecast explanation generation. In this task, the model receives forecast indicators such as probability of impact, confidence interval, rainfall intensity, surge level, exposure of vulnerable populations, and historical analog information. The expected output is a clear, decision-support explanation for emergency planners, response teams, or humanitarian stakeholders.
 
 B. Instruction Dataset Creation
-I created a domain-specific instruction dataset in JSON format. The dataset was designed to teach the model how to convert structured forecast signals into grounded, human-readable explanations. The examples include multiple scenario types such as:
-- storm track uncertainty explanation
-- flood response planning
-- evacuation planning under uncertainty
-- vulnerable population impact explanation
-- resource allocation recommendations
-- historical analog based explanation
-- best-case and worst-case scenario summaries
-
-The dataset was intentionally written in an instruction-input-output format so it could be used directly for supervised fine-tuning. I also ensured that the responses stayed close to the project goal of decision support rather than generic weather summarization.
+I created a domain-specific instruction dataset in JSON format. The dataset was designed to teach the model how to convert structured forecast signals into grounded, human-readable explanations. 
 
 C. Fine-Tuning Implementation
-I implemented a LoRA-based fine-tuning workflow in Python using Hugging Face Transformers, PEFT, and TRL. I selected LoRA because it is efficient, practical for a course project, and appropriate when full model fine-tuning is too resource-intensive. The script supports:
-- building the instruction dataset
-- formatting the data for supervised fine-tuning
-- applying LoRA adapters to the base language model
-- training the model
-- saving the adapted model
-- evaluating baseline and adapted responses
+I implemented a LoRA-based fine-tuning workflow in Python using Hugging Face Transformers, PEFT, and TRL. The script (`lab8_individual_lora_fixed.py`) supports building the instruction dataset, supervised fine-tuning the `TinyLlama-1.1B` base model, saving the adapted model to `lab8_adapted_model`, and evaluating baseline and adapted responses.
 
-D. Evaluation Setup
-I created a baseline-versus-adapted evaluation structure with 10 representative disaster-related queries. These evaluation prompts test whether the adapted model is more domain-aware, more specific, and more useful for emergency decision support than the unadapted baseline model. The evaluation template stores:
-- query id
-- instruction
-- input
-- baseline response
-- adapted response
-- optional reviewer notes
-- optional scoring fields
+D. Evaluation Setup & Automated Scoring
+I created a baseline-versus-adapted evaluation structure with 10 representative disaster-related queries. Furthermore, I evaluated these outputs, supplying reviewer notes and scores for domain specificity and operational usefulness, all of which are documented in `evaluation_results_lab8.json`.
 
-E. Planned System Integration
-The adapted model is intended to be inserted into the existing project pipeline after retrieval. In the final integrated workflow:
-User Query -> Retrieved Context / Forecast Evidence -> Adapted Model -> Decision-Support Explanation
+E. System Integration (FastAPI and Streamlit)
+To demonstrate the practical use of the adapted model, I integrated it into a full application stack.
+- FastAPI Backend (`api.py`): Hosts the fine-tuned LoRA model through an API endpoint that generates the text outputs.
+- Streamlit UI (`app.py`): A front-end web interface that allows users to pass disaster instructions and context inputs, which queries the FastAPI backend to visualize the adapted model's explanations.
 
-This supports the larger architecture of my project, which combines forecasting outputs, uncertainty information, retrieved historical context, and human-readable decision support narratives.
+F. Documentation
+Generated the comprehensive Group Report detailing the overall approach and wrote this Individual Contribution Report.
 
 3. Contribution Percentage
 Because this submission is individual, my contribution to the work is:
-
 Adrija Ghosh – 100%
 
-I independently handled dataset design, fine-tuning implementation, evaluation setup, and write-up preparation.
-
 4. GitHub Evidence
-GitHub repository:
-https://github.com/Ag230602/Big_data_2026_ag
+I have pushed all the deliverables, including the Streamlit app, API logic, generated JSON files, the trained LoRA adapter, and all reports to my GitHub repository.
 
-The repository is the main location for project artifacts, scripts, notebooks, and documentation. For this lab, the relevant evidence includes:
-- the instruction dataset file
-- the LoRA training script
-- updated documentation describing the adaptation workflow
-- future commits related to integration and evaluation
+Lab 8 Submission Repository Links:
+https://github.com/Ag230602/lab_8
+https://github.com/Ag230602/lab_8/tree/main/Lab8_Individual_Submission_Adrija
 
 5. AI Tools Used and How They Helped
-I used AI-assisted development tools to improve efficiency, debug code, and refine the structure of the submission. These tools helped me accelerate implementation, but I reviewed and organized the outputs to keep the project aligned with the lab requirements.
+I used AI-assisted development tools to improve efficiency, debug code, and refine the structure of the submission. 
 
 Tools used:
-- ChatGPT: used for structuring the fine-tuning workflow, drafting report language, generating starter dataset patterns, and organizing the deliverables.
-- Cursor AI: used for coding support, editing, and debugging the Python training script.
-- Claude: used to compare phrasing patterns for instruction-response examples and to improve clarity in domain-specific outputs.
-
-How the tools assisted:
-- helped generate draft instruction examples
-- suggested improvements to LoRA training structure
-- helped organize evaluation format
-- improved documentation wording and submission readiness
-
-How I maintained accountability:
-- I reviewed the generated outputs manually
-- I tailored all examples to my disaster forecasting project
-- I chose the final structure, organization, and content
-- I verified that the deliverables matched the Lab 8 rubric
+- Antigravity: Used heavily to debug package installation issues, diagnose missing values in the evaluation schema, write a Python auto-evaluator script, generate the FastAPI backend and Streamlit frontend code, update comprehensive reports, and successfully commit and push all the generated deliverables to GitHub.
+- ChatGPT, Cursor AI, Claude: Initially used to generate drafted dataset examples and structure the LoRA training architecture.
 
 6. Learning Outcome
-Through this work, I learned how domain adaptation can improve a GenAI system beyond standard RAG prompting. I also gained a better understanding of:
-- supervised instruction tuning
-- parameter-efficient fine-tuning with LoRA
-- designing domain-aligned instruction datasets
-- comparing baseline and adapted model behavior
-- preparing an adapted model for downstream integration into a larger application pipeline
-
-This lab was valuable because it moved the project closer to a true domain-specialized assistant instead of a general-purpose text generator.
+Through this work, I learned how domain adaptation can improve a GenAI system beyond standard RAG prompting. I gained practical experience deploying a fine-tuned model via API and integrating it into a user-facing Streamlit application.
 
 7. Summary
-In summary, my individual contribution for Lab 8 was the end-to-end preparation of a domain adaptation workflow for my disaster forecasting project. I created the instruction dataset, implemented the LoRA fine-tuning script, prepared the evaluation framework, and documented the work in a form ready for submission. My contribution percentage is 100%, and the work directly supports the evolution of the project from a RAG-based system into a more specialized AI assistant for uncertainty-aware disaster decision support.
+In summary, my individual contribution for Lab 8 was the end-to-end preparation of a domain adaptation workflow for my disaster forecasting project. I created the dataset, fine-tuned the model, filled out the evaluations, built an application UI and API, and pushed all materials to GitHub. 
