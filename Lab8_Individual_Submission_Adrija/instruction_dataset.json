@@ -1,0 +1,152 @@
+[
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 51%, confidence interval \u00b161 km, population exposure 101000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 52%, confidence interval \u00b162 km, population exposure 102000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 53%, confidence interval \u00b163 km, population exposure 103000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 54%, confidence interval \u00b164 km, population exposure 104000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 55%, confidence interval \u00b165 km, population exposure 105000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 56%, confidence interval \u00b166 km, population exposure 106000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 57%, confidence interval \u00b167 km, population exposure 107000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 58%, confidence interval \u00b168 km, population exposure 108000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 59%, confidence interval \u00b169 km, population exposure 109000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 60%, confidence interval \u00b170 km, population exposure 110000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 61%, confidence interval \u00b171 km, population exposure 111000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 62%, confidence interval \u00b172 km, population exposure 112000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 63%, confidence interval \u00b173 km, population exposure 113000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 64%, confidence interval \u00b174 km, population exposure 114000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 65%, confidence interval \u00b175 km, population exposure 115000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 66%, confidence interval \u00b176 km, population exposure 116000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 67%, confidence interval \u00b177 km, population exposure 117000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 68%, confidence interval \u00b178 km, population exposure 118000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 69%, confidence interval \u00b179 km, population exposure 119000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 70%, confidence interval \u00b180 km, population exposure 120000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 71%, confidence interval \u00b181 km, population exposure 121000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 72%, confidence interval \u00b182 km, population exposure 122000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 73%, confidence interval \u00b183 km, population exposure 123000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 74%, confidence interval \u00b184 km, population exposure 124000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 75%, confidence interval \u00b185 km, population exposure 125000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 76%, confidence interval \u00b186 km, population exposure 126000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 77%, confidence interval \u00b187 km, population exposure 127000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 78%, confidence interval \u00b188 km, population exposure 128000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 79%, confidence interval \u00b189 km, population exposure 129000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  },
+  {
+    "instruction": "Explain disaster forecast uncertainty for emergency planners.",
+    "input": "Storm probability 80%, confidence interval \u00b190 km, population exposure 130000.",
+    "output": "The forecast suggests potential impact in nearby regions. Because the uncertainty band is wide, emergency planners should prepare contingency plans and monitor updates."
+  }
+]
