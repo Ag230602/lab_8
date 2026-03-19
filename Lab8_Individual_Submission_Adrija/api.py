@@ -1,53 +1,111 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from peft import PeftModel
-import os
+from time import perf_counter
+from uuid import uuid4
 
-app = FastAPI(title="Disaster Forecast Explanation API (Adapted)")
+from fastapi import FastAPI, Request
 
-DEFAULT_MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-OUTPUT_DIR = "lab8_adapted_model"
+from ai_app.agent import DisasterForecastAgent
+from ai_app.config import BASE_DIR
+from ai_app.evaluation import run_sample_evaluation
+from ai_app.logging_utils import configure_logging
+from ai_app.models import HealthResponse, QueryRequest, QueryResponse
+from ai_app.monitoring import MonitoringService
 
-# Load Model
-tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL)
-if tokenizer.pad_token is None:
-    tokenizer.pad_token = tokenizer.eos_token
 
-adapted_base = AutoModelForCausalLM.from_pretrained(
-    DEFAULT_MODEL,
-    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-    device_map="auto" if torch.cuda.is_available() else None
-)
-if os.path.exists(OUTPUT_DIR):
-    model = PeftModel.from_pretrained(adapted_base, OUTPUT_DIR)
-else:
-    model = adapted_base # Fallback if model not found
-model.eval()
+app = FastAPI(title="Disaster Forecast AI Application")
+agent = DisasterForecastAgent()
+monitoring_service = MonitoringService()
+logger = configure_logging(BASE_DIR)
 
-class QueryRequest(BaseModel):
-    instruction: str
-    input: str
 
-class QueryResponse(BaseModel):
-    explanation: str
+@app.middleware("http")
+async def request_logging_middleware(request: Request, call_next):
+    request_id = str(uuid4())
+    start = perf_counter()
+    logger.info("request_started id=%s path=%s method=%s", request_id, request.url.path, request.method)
+    try:
+        response = await call_next(request)
+        latency_ms = (perf_counter() - start) * 1000
+        logger.info(
+            "request_completed id=%s path=%s status=%s latency_ms=%.2f",
+            request_id,
+            request.url.path,
+            response.status_code,
+            latency_ms,
+        )
+        response.headers["X-Request-ID"] = request_id
+        return response
+    except Exception as exc:
+        latency_ms = (perf_counter() - start) * 1000
+        monitoring_service.record_error(request.url.path, latency_ms, str(exc))
+        logger.exception(
+            "request_failed id=%s path=%s latency_ms=%.2f error=%s",
+            request_id,
+            request.url.path,
+            latency_ms,
+            exc,
+        )
+        raise
+
+
+@app.get("/health", response_model=HealthResponse)
+def health_check():
+    return agent.health()
+
 
 @app.post("/generate", response_model=QueryResponse)
 def generate_explanation(request: QueryRequest):
-    prompt = f"Instruction: {request.instruction}\nInput: {request.input}\nResponse:"
-    tokens = tokenizer(prompt, return_tensors="pt")
-    
-    with torch.no_grad():
-        device = next(model.parameters()).device
-        tokens = {k: v.to(device) for k, v in tokens.items()}
-        out = model.generate(**tokens, max_new_tokens=100, do_sample=False)
+    started = perf_counter()
+    result = agent.answer(
+        instruction=request.instruction,
+        user_input=request.input,
+        region=request.region,
+        top_k=request.top_k,
+    )
+    latency_ms = (perf_counter() - started) * 1000
+    monitoring_service.record_success(
+        path="/generate",
+        latency_ms=latency_ms,
+        used_fallback_model=result["used_fallback_model"],
+    )
+    logger.info(
+        "generation_completed region=%s top_k=%s fallback=%s latency_ms=%.2f",
+        request.region,
+        request.top_k,
+        result["used_fallback_model"],
+        latency_ms,
+    )
+    return QueryResponse(**result)
 
-    decoded = tokenizer.decode(out[0], skip_special_tokens=True)
-    explanation = decoded.split("Response:", 1)[-1].strip() if "Response:" in decoded else decoded.strip()
-    
-    return QueryResponse(explanation=explanation)
+
+@app.get("/architecture")
+def architecture():
+    return {
+        "layers": [
+            "Data Sources",
+            "Knowledge Base",
+            "Retrieval Pipeline",
+            "Domain-Adapted Model",
+            "AI Agent Reasoning",
+            "Snowflake Data Warehouse",
+            "Application Interface",
+            "Monitoring and Deployment",
+        ]
+    }
+
+
+@app.get("/metrics")
+def metrics():
+    return monitoring_service.summary()
+
+
+@app.get("/evaluation")
+def evaluation():
+    report = run_sample_evaluation(agent)
+    logger.info("evaluation_completed scenarios=%s", report["scenario_count"])
+    return report
+
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000)

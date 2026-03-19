@@ -1,7 +1,7 @@
-Lab 8 – Individual Contribution Report
+Lab 8 - Individual Contribution Report
 Adrija Ghosh
 Course: CS 5542
-Assignment: Lab 8 – Fine-Tuning and Domain Adaptation for GenAI Systems
+Assignment: Lab 8 - Fine-Tuning and Domain Adaptation for GenAI Systems
 
 Project Title
 GenAI-Driven Uncertainty-Aware Forecasting and Recovery Simulation for Decision Support
@@ -18,42 +18,44 @@ A. Domain Task Definition
 I defined the domain task as uncertainty-aware disaster forecast explanation generation. In this task, the model receives forecast indicators such as probability of impact, confidence interval, rainfall intensity, surge level, exposure of vulnerable populations, and historical analog information. The expected output is a clear, decision-support explanation for emergency planners, response teams, or humanitarian stakeholders.
 
 B. Instruction Dataset Creation
-I created a domain-specific instruction dataset in JSON format. The dataset was designed to teach the model how to convert structured forecast signals into grounded, human-readable explanations. 
+I created a domain-specific instruction dataset in JSON format. The dataset was designed to teach the model how to convert structured forecast signals into grounded, human-readable explanations.
 
 C. Fine-Tuning Implementation
-I implemented a LoRA-based fine-tuning workflow in Python using Hugging Face Transformers, PEFT, and TRL. The script (`lab8_individual_lora_fixed.py`) supports building the instruction dataset, supervised fine-tuning the `TinyLlama-1.1B` base model, saving the adapted model to `lab8_adapted_model`, and evaluating baseline and adapted responses.
+I implemented a LoRA-based fine-tuning workflow in Python using Hugging Face Transformers and PEFT. The script (`lab8_individual_lora_fixed.py`) supports building the instruction dataset, supervised fine-tuning the `TinyLlama-1.1B` base model, saving the adapted model to `lab8_adapted_model`, and evaluating baseline and adapted responses.
 
-D. Evaluation Setup & Automated Scoring
-I created a baseline-versus-adapted evaluation structure with 10 representative disaster-related queries. Furthermore, I evaluated these outputs, supplying reviewer notes and scores for domain specificity and operational usefulness, all of which are documented in `evaluation_results_lab8.json`.
+D. Evaluation, Monitoring, and Stability
+I added evaluation and monitoring support for the application, including health, metrics, and lightweight evaluation endpoints. I also added fallback behavior so the system remains stable if the base model or Snowflake warehouse is not available locally.
 
-E. System Integration (FastAPI and Streamlit)
-To demonstrate the practical use of the adapted model, I integrated it into a full application stack.
-- FastAPI Backend (`api.py`): Hosts the fine-tuned LoRA model through an API endpoint that generates the text outputs.
-- Streamlit UI (`app.py`): A front-end web interface that allows users to pass disaster instructions and context inputs, which queries the FastAPI backend to visualize the adapted model's explanations.
+E. System Integration
+I integrated the AI workflow into a full application stack:
+- FastAPI backend (`api.py`) for generation, health checks, metrics, and evaluation
+- Streamlit frontend (`app.py`) for user interaction, workflow display, and monitoring access
+- Retrieval and agent orchestration in the `ai_app/` package
 
-F. Documentation
-Generated the comprehensive Group Report detailing the overall approach and wrote this Individual Contribution Report.
+F. Documentation and Submission Packaging
+I prepared the project documentation, GitHub repository link file, contribution evidence file, and this individual report so the submission is clearly presented as an individual project rather than a group submission.
 
 3. Contribution Percentage
 Because this submission is individual, my contribution to the work is:
-Adrija Ghosh – 100%
+Adrija Ghosh - 100%
 
 4. GitHub Evidence
-I have pushed all the deliverables, including the Streamlit app, API logic, generated JSON files, the trained LoRA adapter, and all reports to my GitHub repository.
+I have pushed the deliverables, including the Streamlit app, API logic, generated JSON files, the trained LoRA adapter, and submission documents to my GitHub repository.
 
 Lab 8 Submission Repository Links:
 https://github.com/Ag230602/lab_8
 https://github.com/Ag230602/lab_8/tree/main/Lab8_Individual_Submission_Adrija
 
-5. AI Tools Used and How They Helped
-I used AI-assisted development tools to improve efficiency, debug code, and refine the structure of the submission. 
-
-Tools used:
-- Antigravity: Used heavily to debug package installation issues, diagnose missing values in the evaluation schema, write a Python auto-evaluator script, generate the FastAPI backend and Streamlit frontend code, update comprehensive reports, and successfully commit and push all the generated deliverables to GitHub.
-- ChatGPT, Cursor AI, Claude: Initially used to generate drafted dataset examples and structure the LoRA training architecture.
+5. Submission Artifacts
+This repository is organized for individual submission and includes:
+- Individual contribution report
+- GitHub repository link
+- GitHub contribution evidence
+- Application code and documentation
+- Space to include application screenshots if needed
 
 6. Learning Outcome
-Through this work, I learned how domain adaptation can improve a GenAI system beyond standard RAG prompting. I gained practical experience deploying a fine-tuned model via API and integrating it into a user-facing Streamlit application.
+Through this work, I learned how domain adaptation can improve a GenAI system beyond standard RAG prompting. I gained practical experience deploying a fine-tuned model via API, integrating it into a user-facing Streamlit application, and adding monitoring and stability features.
 
 7. Summary
-In summary, my individual contribution for Lab 8 was the end-to-end preparation of a domain adaptation workflow for my disaster forecasting project. I created the dataset, fine-tuned the model, filled out the evaluations, built an application UI and API, and pushed all materials to GitHub. 
+In summary, my individual contribution for Lab 8 was the end-to-end preparation of a domain adaptation workflow for my disaster forecasting project. I created the dataset, fine-tuned the model, built the API and UI, added monitoring support, and packaged the deliverables for GitHub submission.
